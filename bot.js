@@ -58,42 +58,7 @@ message.delete();
 
 
 
-client.on("message", message => {
-if (message.author.bot) return;
 
-if (!message.content.startsWith(prefix)) return;
-
-let command = message.content.split(" ")[0];
-command = command.slice(prefix.length);
-
-let args = message.content.split(" ").slice(1);
-
-
-if (command === "say") {
-if (!message.channel.guild)
-return message.channel
-.send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
-.then(m => m.delete(5000));
-if (!message.member.hasPermission("ADMINISTRATOR"))
-return message.channel.send("ببورە ئەم دەسەڵاتەت نیە ADMINISTRATOR");
-message.delete();
-message.channel.sendMessage(args.join(" "));
-} 
-
-if (command == "embed") {
-if (!message.channel.guild)
-return message.channel
-.send("ببورە ئەم ئەمرە تەنها بۆ سێرفەرە")
-.then(m => m.delete(5000));
-if (!message.member.hasPermission("MANAGE_MESSAGES"))
-return message.channel.send("ببورە ئەم دەسەڵاتەت نیە MANAGE_MESSAGES");
-let say = new Discord.RichEmbed()
-.setDescription(args.join(" "))
-.setColor(0x23b2d6);
-message.channel.sendEmbed(say);
-message.delete();
-}
-});
 
 
 
@@ -139,33 +104,8 @@ m.setVoiceChannel(author);
 }
 });
 
-client.on("message", message => {
-var args = message.content.substring(length).split(" ");
-if (message.content.startsWith("clear")) {
-if (!message.channel.guild) return message.reply("**تۆ ئەدمین ستاتۆری ؟**");
-if (!message.member.hasPermission("MANAGE_MESSAGES"))
-return message.reply(
-"**ببورە تۆ ئەدمین ستاتۆر نی تا بە ئازادی ئەم کۆماندە بە کابێنی**"
-);
-var msg;
-msg = parseInt();
-message.channel
-.fetchMessages({ limit: msg })
-.then(messages => message.channel.bulkDelete(messages))
-.catch(console.error);
-message.channel
-.sendMessage("", {
-embed: {
-title: "`` بە سەرکەوتوی نامەکان رەش کرایەوە ``",
-color: 0x5016f3,
-footer: {}
-}
-})
-.then(msg => {
-msg.delete(3000);
-});
-}
-});
+
+
 
 
 client.on("message", message => {
@@ -260,7 +200,7 @@ message.reply('**بڕۆ فۆیسێک ئینجا بانگ بکت چاوەکەم**
 
 
 
-client.login("NzMxOTAyNTk2NjM3MzkzMDA2.XwszaQ.yCYJ6blxGt4E2DKKraOzmfKv3Ik")
+client.login("NzMxOTAyNTk2NjM3MzkzMDA2.XwszaQ.ClOQLxLTusbpo0NulzraNssdl4s")
 
 
 
